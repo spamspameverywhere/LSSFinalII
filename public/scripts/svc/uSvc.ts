@@ -26,7 +26,7 @@ namespace lssFinalApp.Services {
     };
 
     public setUser() {
-      let authToken = JSON.parse(
+      let user = JSON.parse(
         atob(this.$window.localStorage.getItem("token")
         .split(".")[1] ));
     };

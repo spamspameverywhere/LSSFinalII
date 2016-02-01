@@ -32,7 +32,7 @@ router.post("/register", (req, res, next) => {
   if (req.body.password !== req.body.pwdConfirm) return next("Passwords do not match");
   newUser.save((error, user, token) => {
     if (error) return next(error);
-    res.json({user});
+    res.send(user);
   });
 });
 

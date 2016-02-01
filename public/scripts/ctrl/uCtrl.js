@@ -8,7 +8,6 @@ var lssFinalApp;
                 this.uSvc = uSvc;
                 this.$location = $location;
                 this.$window = $window;
-                this.loggedInUser = uSvc.loadUHome(this.$window.localStorage.getItem("username"));
             }
             uCtrl.prototype.register = function () {
                 var _this = this;
@@ -19,9 +18,9 @@ var lssFinalApp;
                     pwdConfirm: this.newUser.pwdConfirm
                 };
                 this.uSvc.registerUser(this.newUser).then(function (res) {
-                    _this.$window.localStorage.setItem("username", _this.newUser.username);
                     _this.uSvc.setToken(res.token);
                     _this.uSvc.setUser();
+                    _this.$window.localStorage.setItem("username", _this.newUser.username);
                     _this.$location.path(_this.newUser.username);
                 });
             };
@@ -29,9 +28,9 @@ var lssFinalApp;
             uCtrl.prototype.login = function () {
                 var _this = this;
                 this.uSvc.login(this.user).then(function (res) {
-                    _this.$window.localStorage.setItem("username", _this.user.username);
                     _this.uSvc.setToken(res.token);
                     _this.uSvc.setUser();
+                    _this.$window.localStorage.setItem("username", _this.user.username);
                     _this.$location.path(_this.user.username);
                 });
             };

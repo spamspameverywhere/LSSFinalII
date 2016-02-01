@@ -30,7 +30,7 @@ var lssFinalApp;
             };
             ;
             uSvc.prototype.setUser = function () {
-                var authToken = JSON.parse(atob(this.$window.localStorage.getItem("token")
+                var user = JSON.parse(atob(this.$window.localStorage.getItem("token")
                     .split(".")[1]));
             };
             ;

@@ -17,7 +17,7 @@ router.post("/register", function (req, res, next) {
     newUser.save(function (error, user, token) {
         if (error)
             return next(error);
-        res.json({ user: user });
+        res.send(user);
     });
 });
 router.post("/login", function (req, res, next) {
