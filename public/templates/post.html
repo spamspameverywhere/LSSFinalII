@@ -1,0 +1,8 @@
+<div ng-controller = "pCtrl">
+
+    <h3>{{vm.post.title}}</h3>
+    <img ng-src = "{{vm.post.imageUrl}}">
+    <p>{{vm.post.postText}}</p>
+    <p><a ng-href = "/{{vm.post.origPosterName}}">{{vm.post.origPosterName}}</a> on {{vm.post.timestamps.createdAt}}</p>
+
+</div>

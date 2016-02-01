@@ -1,0 +1,18 @@
+<h2 class = "lssHClass">Posting as {{vm.loggedInUser.username}}</h2>
+
+<h3 class = "lssHClass">New Post:</h3>
+
+<form>
+
+  <label class = "lssHClass">Title: </label>
+  <input ng-model = "vm.newPost.title" type = "text" placeholder = "Enter title"><br><br>
+
+  <label class = "lssHClass">Image URL: </label>
+  <input ng-model = "vm.newPost.imageUrl" type = "text" placeholder = "Add an image link?"><br><br>
+
+  <label class = "lssHClass">Text: </label>
+  <input ng-model = "vm.newPost.postText" type = "textarea" placeholder = "Enter content"><br><br><br>
+
+  <input class = "lssSecondaryBtn" ng-click = "vm.addNewPost()" type = "submit" value = "Submit">
+
+</form>

@@ -1,0 +1,41 @@
+{
+  "name": "lssfinal",
+  "version": "1.0.0",
+  "description": "lssfinal",
+  "main": "nodemon server.js",
+  "scripts": {
+    "test": "hello world"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spamspameverywhere/LSSFinalSoloII.git"
+  },
+  "keywords": [
+    "lssfinalsolo"
+  ],
+  "author": "lss",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spamspameverywhere/LSSFinalSoloII/issues"
+  },
+  "homepage": "https://github.com/spamspameverywhere/LSSFinalSoloII#readme",
+  "dependencies": {
+    "angular": "^1.4.9",
+    "angular-animate": "^1.4.9",
+    "angular-resource": "^1.4.9",
+    "angular-route": "^1.4.9",
+    "angular-ui-bootstrap": "^1.1.1",
+    "async": "^1.5.2",
+    "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.1",
+    "dotenv": "^2.0.0",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "express-jwt": "^3.3.0",
+    "jsonwebtoken": "^5.5.4",
+    "kerberos": "0.0.18",
+    "mongoose": "^4.3.7",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
+  }
+}

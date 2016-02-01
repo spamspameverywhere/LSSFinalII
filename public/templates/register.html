@@ -1,0 +1,19 @@
+<h3 class = "lssHClass">Registration:</h3>
+
+<form>
+
+  <label class = "lssHClass">Username: </label>
+  <input ng-model = "vm.newUser.username" type = "text" placeholder = "Enter username"><br><br>
+
+  <label class = "lssHClass">Email: </label>
+  <input ng-model = "vm.newUser.email" type = "email" placeholder = "Enter email"><br><br>
+
+  <label class = "lssHClass">Password: </label>
+  <input ng-model = "vm.newUser.password" type = "password" placeholder = "Enter password"><br><br>
+
+  <label class = "lssHClass">Confirm Password: </label>
+  <input ng-model = "vm.newUser.pwdConfirm" type = "password" placeholder = "Confirm password"><br><br><br>
+
+  <input class = "lssSecondaryBtn" ng-click = "vm.register()" type = "submit" value = "Register">
+
+</form>

@@ -1,0 +1,54 @@
+<div ng-controller = "uHomeCtrl">
+
+  <h1 class = "lssHClass">{{vm.user.username}}</h1>
+
+  <div class = "row">
+    <div class = "col-md-9" id = "uHomeCol0">
+
+      <div class = "row">
+        <h3 class = "lssHClass">Your Posts</h3>
+        <div ng-repeat = "post in vm.user.uPosts.postsOwn" class = "col-md-4">
+          <h4><a ng-href = "/{{vm.user.username}}/{{post.title}}">{{post.title}}</a></h4>
+          <img ng-src = "{{post.imageUrl}}" class = "img-responsive">
+          <p>{{post.createdAt}}</p>
+        </div>
+      </div>
+
+      <div class = "row">
+        <h3 class = "lssHClass">Other Users' Posts You Liked</h3>
+        <div ng-repeat = "postOthers in vm.postsOthers" class = "col-md-4">
+          <h4><a ng-href = "/{{vm.user.username}}/{{postOthers.title}}">{{postOthers.title}}</a></h4>
+          <img ng-src = "{{postOthers.imageUrl}}" class = "img-responsive">
+          <p>{{postOthers.createdAt}} by {{postOthers.origPosterName}}</p>
+        </div>
+      </div>
+
+      <div class = "row">
+        <h3 class = "lssHClass">Your Comments</h3>
+        <div ng-repeat = "comment in vm.comments">
+          <h4><a ng-href = ":/{{comment.commenter.username}}/{{comment.postedTo.title}}">{{comment.postedTo.title}}</a></h4>
+          <p>{{comment.createdAt}}</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class = "col-md-3" id = "uHomeSideNav">
+
+      <div class = "row well well-md">
+        <h4>You are logged in as <em class = "lssHClass"><a ng-href = "/{{vm.loggedInUser.username}}">{{vm.loggedInUser.username}}</em></a></h4>
+        <input class = "lssSecondaryBtn" type = "button" ng-click = "editUProfile()" value = "Edit my information">
+        <a class = "lssSecondaryBtn" target = "_self" href = "/{{vm.user.username}}/addPost">Add new post</a>
+      </div>
+
+      <div "row well well-md">
+        <h4 class = "lssHClass">Friends:</h4>
+        <div ng-repeat = "friend in vm.friends">
+          <p><a ng-href = ":/{{friend.username}}">{{friend.username}}</a></p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
