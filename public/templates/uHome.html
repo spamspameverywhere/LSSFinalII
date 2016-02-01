@@ -8,7 +8,7 @@
       <div class = "row">
         <h3 class = "lssHClass">Your Posts</h3>
         <div ng-repeat = "post in vm.user.uPosts.postsOwn" class = "col-md-4">
-          <h4><a ng-href = "/{{vm.user.username}}/{{post.title}}">{{post.title}}</a></h4>
+          <h4><a ng-href = "/{{post.origPosterName}}/{{post.title}}">{{post.title}}</a></h4>
           <img ng-src = "{{post.imageUrl}}" class = "img-responsive">
           <p>{{post.createdAt}}</p>
         </div>

@@ -47,7 +47,7 @@ router.post("/login", (req, res, next) => {
 });
 
 ////////////////////////
-///GET: ID User for uHome
+///GET: User for uHome
 ////////////////////////
 
 router.get("/:username", (req, res, next) => {

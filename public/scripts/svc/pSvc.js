@@ -7,30 +7,20 @@ var lssFinalApp;
             function pSvc($resource, $window) {
                 this.$resource = $resource;
                 this.$window = $window;
-                this.pAllResource = $resource("/postshell");
                 this.pAddResource = $resource("/postshell/addPost");
-                this.pGetResource = $resource("/:username/:title", null, {
-                    "update": { method: "PUT" }
-                });
+                this.pAllResource = $resource("/postshell/");
+                this.pGetResource = $resource("/postshell/:username/:title");
             }
             pSvc.prototype.savePost = function (newPost) {
                 return this.pAddResource.save(newPost).$promise;
             };
             ;
+            pSvc.prototype.getAllPosts = function () {
+                return this.pAllResource.get();
+            };
+            ;
             pSvc.prototype.getPost = function (title) {
                 return this.pGetResource.get({ title: title });
-            };
-            ;
-            pSvc.prototype.getAllPosts = function () {
-                return this.pAllResource.query();
-            };
-            ;
-            pSvc.prototype.editPost = function (post) {
-                this.pGetResource.updatePost({ _id: post._id });
-            };
-            ;
-            pSvc.prototype.deletePost = function (postId) {
-                return this.pGetResource.delete({ _id: postId }).$promise;
             };
             ;
             ;

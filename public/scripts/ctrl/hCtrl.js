@@ -9,10 +9,14 @@ var lssFinalApp;
                 this.$location = $location;
                 this.$routeParams = $routeParams;
                 this.loadAllPosts = pSvc.getAllPosts();
-                this.post = pSvc.getPost($routeParams["_id"]);
+                this.onePost = pSvc.getPost($routeParams["loadAllPosts.posts.title"]);
             }
-            hCtrl.prototype.getPostIndiv = function (_id) {
-                this.pSvc.getPost(this.post._id);
+            hCtrl.prototype.viewPost = function (title) {
+                this.$location.path(this.onePost.title);
+            };
+            ;
+            hCtrl.prototype.navToggle = function ($scope) {
+                $scope.isCollapsed = false;
             };
             ;
             ;

@@ -1,6 +1,6 @@
 <div ng-controller = "hCtrl"  class = "row">
 
-  <div ng-repeat = "post in vm.loadAllPosts" class = "col-md-4">
+  <div ng-repeat = "post in vm.loadAllPosts.posts" class = "col-md-4">
     <h3><a ng-href = "/{{post.origPosterName}}/{{post.title}}">{{post.title}}</a></h3>
     <p><a ng-href = "/{{post.origPosterName}}">{{post.origPosterName}}</a></p>
     <p><a ng-href = "/{{post.origPosterName}}/{{post.title}}"><img ng-src = "{{post.imageUrl}}" class = "img-responsive"></a></p>

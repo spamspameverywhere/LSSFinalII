@@ -29,6 +29,7 @@
         "public/scripts/app.ts",
         "public/scripts/ctrl/hCtrl.ts",
         "public/scripts/ctrl/pCtrl.ts",
+        "public/scripts/ctrl/pIndCtrl.ts",
         "public/scripts/ctrl/uCtrl.ts",
         "public/scripts/ctrl/uHomeCtrl.ts",
         "public/scripts/svc/HTTPFactory.ts",

@@ -31,7 +31,7 @@ router.get("/", (req, res, next) => {
   .exec((error, posts) => {
     if (error) return next(error);
     if (!posts) res.send([]);
-    res.json(posts);
+    res.send({posts});
   });
 });
 
@@ -56,6 +56,20 @@ router.post("/addPost", auth, (req, res, next) => {
 });
 
 ////////////////////////
+///GET: Single post
+////////////////////////
+
+router.get("/:title", (req, res, next) => {
+  Post.findOne({title: req.params["title"]})
+  .populate("comments")
+  .exec((error, onePost) => {
+    if (error) return next(error);
+    if (!onePost) return next({message: "No post"});
+    res.send(onePost)
+  });
+});
+
+////////////////////////
 ///GET: User posts
 ////////////////////////
 
@@ -64,10 +78,9 @@ router.get("/:username", (req, res, next) => {
   .exec((error, posts) => {
     if (error) return next(error);
     if (!posts) res.send([]);
-    res.send(posts);
+    res.send({posts});
   });
 });
-
 
 ////////////////////////
 ///PUT: Edit Post

@@ -17,7 +17,7 @@ router.get("/", function (req, res, next) {
             return next(error);
         if (!posts)
             res.send([]);
-        res.send(posts);
+        res.send({ posts: posts });
     });
 });
 router.post("/addPost", auth, function (req, res, next) {
@@ -37,17 +37,28 @@ router.post("/addPost", auth, function (req, res, next) {
         });
     });
 });
-router.get("/:_id", function (req, res, next) {
-    Post.findOne({ _id: req.params["_id"] })
-        .exec(function (error, post) {
+router.get("/:title", function (req, res, next) {
+    Post.findOne({ title: req.params["title"] })
+        .populate("comments")
+        .exec(function (error, onePost) {
         if (error)
             return next(error);
-        if (!post)
-            res.send({ message: "No post" });
-        res.send({ post: post });
+        if (!onePost)
+            return next({ message: "No post" });
+        res.send(onePost);
     });
 });
-router.put("/:_id", function (req, res, next) {
+router.get("/:username", function (req, res, next) {
+    Post.find({ origPosterName: req.query["username"] })
+        .exec(function (error, posts) {
+        if (error)
+            return next(error);
+        if (!posts)
+            res.send([]);
+        res.send({ posts: posts });
+    });
+});
+router.put("/:username/:title", function (req, res, next) {
     Post.findOneAndUpdate({ _id: req.params._id }, req.body, { new: true }, function (error, post) {
         if (error)
             return next(error);
@@ -56,7 +67,7 @@ router.put("/:_id", function (req, res, next) {
         res.send(post);
     });
 });
-router.delete("/:_id", function (req, res, next) {
+router.delete("/:username/:title", function (req, res, next) {
     if (!req.query._id)
         return next({ message: "No post" });
     Post.remove({ _id: req.query._id }, function (error, result) {

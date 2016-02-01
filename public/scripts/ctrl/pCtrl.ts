@@ -5,7 +5,7 @@ namespace lssFinalApp.Controllers {
   export class pCtrl {
 
     public newPost;
-    public post;
+    public onePost;
     public postsOwn;
 
     public user;
@@ -25,19 +25,9 @@ namespace lssFinalApp.Controllers {
       });
     };
 
-    public getPostIndiv(title) {
-
-    };
-
-    public editOwnPost(_id) {
-
-    };
-
-    public deleteOwnPost(_id) {
-      this.pSvc.deletePost(_id).then((res) => {
-        this.postsOwn = this.postsOwn.filter((post) => post._id !== _id);
-      });
-    };
+    public viewPost(title) {
+      this.$location.path(this.onePost.origPosterName + "/" + this.onePost.title);
+    }
 
     constructor(
       private pSvc: lssFinalApp.Services.pSvc,
@@ -46,8 +36,8 @@ namespace lssFinalApp.Controllers {
       private $routeParams: ng.route.IRouteParamsService,
       private $window: ng.IWindowService
     ) {
+      this.onePost = pSvc.getPost($routeParams["title"]);
       this.user = uSvc.loadUHome($routeParams["username"]);
-      this.post = pSvc.getPost($routeParams["title"]);
       this.loggedInUser = this.loggedInUser = uSvc.loadUHome(this.$window.localStorage.getItem("username"));
     };
   };
