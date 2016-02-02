@@ -29,8 +29,10 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
     console.log("Connected to LSSFinal DB");
 });
+var cRoutes = require("./routes/cRoutes");
 var pRoutes = require("./routes/pRoutes");
 var uRoutes = require("./routes/uRoutes");
+app.use("/commentshell", cRoutes);
 app.use("/postshell", pRoutes);
 app.use("/usershell", uRoutes);
 app.get("/*", function (req, res, next) {

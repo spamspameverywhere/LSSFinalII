@@ -20,7 +20,7 @@ router.get("/", function (req, res, next) {
         res.send({ posts: posts });
     });
 });
-router.post("/addPost", auth, function (req, res, next) {
+router.post("/addPost", function (req, res, next) {
     var newPost = new Post();
     newPost.title = req.body.title;
     newPost.imageUrl = req.body.imageUrl;
@@ -58,13 +58,13 @@ router.get("/:username", function (req, res, next) {
         res.send({ posts: posts });
     });
 });
-router.put("/:username/:title", function (req, res, next) {
-    Post.findOneAndUpdate({ _id: req.params._id }, req.body, { new: true }, function (error, post) {
+router.put("/:title", function (req, res, next) {
+    Post.findOneAndUpdate({ title: req.params["title"] }, req.body, { new: true }, function (error, onePost) {
         if (error)
             return next(error);
-        if (!post)
+        if (!onePost)
             return next({ message: "No post" });
-        res.send(post);
+        res.send(onePost);
     });
 });
 router.delete("/:username/:title", function (req, res, next) {

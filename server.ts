@@ -76,11 +76,11 @@ db.once("open", function() {
 ///Require routes
 ////////////////////////
 
-//let cRoutes = require("./routes/cRoutes");
+let cRoutes = require("./routes/cRoutes");
 let pRoutes = require("./routes/pRoutes");
 let uRoutes = require("./routes/uRoutes");
 
-//app.use("/commentshell", cRoutes);
+app.use("/commentshell", cRoutes);
 app.use("/postshell", pRoutes);
 app.use("/usershell", uRoutes);
 

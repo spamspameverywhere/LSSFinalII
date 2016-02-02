@@ -1,8 +1,28 @@
-<div ng-controller = "pCtrl">
+<div ng-controller = "pCtrl" class = "row">
 
+  <div class = "col-md-8">
     <h3>{{vm.onePost.title}}</h3>
     <img ng-src = "{{vm.onePost.imageUrl}}">
     <p>{{vm.onePost.postText}}</p>
     <p><a ng-href = "/{{vm.onePost.origPosterName}}">{{vm.onePost.origPosterName}}</a> on {{vm.onePost.timestamps.createdAt}}</p>
+  </div>
+
+  <div ng-controller = "cCtrl" class = "col-md-4">
+    <div class = "row">
+      <h3>Comments</h3>
+      <form>
+        <input ng-model = "commentText" type = "textarea" placeholder = "Speak!">
+        <input class = "lssSecondaryBtn" ng-click = "vm.postComment()" type = "submit" value = "Speak">
+      </form>
+    </div>
+
+    <div ng-controller = "pCtrl" class = "row">
+      <div ng-repeat = "comment in vm.onePost.comments">
+        <p>{{comment.commentText}}</p>
+        <p>Posted by {{comment.commenterName}} on {{comment.timestamps.createdAt}}</p>
+      </div>
+    </div>
+
+  </div>
 
 </div>

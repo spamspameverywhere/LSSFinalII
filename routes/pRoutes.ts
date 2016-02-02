@@ -39,7 +39,7 @@ router.get("/", (req, res, next) => {
 ///POST: New Post
 ////////////////////////
 
-router.post("/addPost", auth, (req, res, next) => {
+router.post("/addPost", (req, res, next) => {
   let newPost = new Post();
   newPost.title = req.body.title;
   newPost.imageUrl = req.body.imageUrl;
@@ -86,14 +86,11 @@ router.get("/:username", (req, res, next) => {
 ///PUT: Edit Post
 ////////////////////////
 
-router.put("/:username/:title", (req, res, next) => {
-  Post.findOneAndUpdate(
-    {_id: req.params._id},
-    req.body,
-    {new: true}, (error, post) => {
+router.put("/:title", (req, res, next) => {
+  Post.findOneAndUpdate({title: req.params["title"]}, req.body, {new: true}, (error, onePost) => {
       if (error) return next(error);
-      if (!post) return next({message: "No post"});
-      res.send(post);
+      if (!onePost) return next({message: "No post"});
+      res.send(onePost);
     });
 });
 
