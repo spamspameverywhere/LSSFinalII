@@ -20,7 +20,6 @@ var lssFinalApp;
                     timestamps: Date.now().toString(),
                     commentText: this.newComment.commentText,
                     postedTo: this.onePost._id,
-                    commenter: this.loggedInUser._id,
                     commenterName: this.loggedInUser.username
                 };
                 this.cSvc.saveComment(newComment).then(function (res) {

@@ -13,7 +13,6 @@ var UserSchema = new mongoose.Schema({
         postsOwn: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
         postsOthers: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
     },
-    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
     friends: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }]
 });
 UserSchema.method("setPassword", function (password) {
