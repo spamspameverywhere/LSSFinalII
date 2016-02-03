@@ -1,10 +1,13 @@
 <div ng-controller = "pCtrl" class = "row">
 
-  <div class = "col-md-8">
-    <h3>{{vm.onePost.title}}</h3>
+  <div class = "col-md-5">
     <img ng-src = "{{vm.onePost.imageUrl}}">
-    <p>{{vm.onePost.postText}}</p>
+  </div>
+
+  <div class = "col-md-3">
+    <h3>{{vm.onePost.title}}</h3>
     <p><a ng-href = "/{{vm.onePost.origPosterName}}">{{vm.onePost.origPosterName}}</a> on {{vm.onePost.timestamps.createdAt}}</p>
+    <p>{{vm.onePost.postText}}</p>
   </div>
 
   <div class = "col-md-4" id = "pCommentSection">

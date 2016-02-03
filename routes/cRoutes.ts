@@ -37,6 +37,19 @@ router.post("/addComment", (req, res, next) => {
 });
 
 ////////////////////////
+///GET: User comments
+////////////////////////
+
+router.get("/:username", (req, res, next) => {
+  Comment.find({commenterName: req.query["username"]})
+  .exec((error, comments) => {
+    if (error) return next(error);
+    if (!comments) res.send([]);
+    res.send({comments});
+  });
+});
+
+////////////////////////
 ///Export
 ////////////////////////
 

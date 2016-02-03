@@ -4,14 +4,16 @@ var lssFinalApp;
     var Controllers;
     (function (Controllers) {
         var uHomeCtrl = (function () {
-            function uHomeCtrl(uSvc, pSvc, $location, $routeParams, $window) {
-                this.uSvc = uSvc;
+            function uHomeCtrl(cSvc, pSvc, uSvc, $location, $routeParams, $window) {
+                this.cSvc = cSvc;
                 this.pSvc = pSvc;
+                this.uSvc = uSvc;
                 this.$location = $location;
                 this.$routeParams = $routeParams;
                 this.$window = $window;
                 this.user = uSvc.loadUHome($routeParams["username"]);
                 this.loggedInUser = uSvc.loadUHome(this.$window.localStorage.getItem("username"));
+                this.comments = cSvc.getComments($routeParams["username"]);
             }
             ;
             return uHomeCtrl;

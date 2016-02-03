@@ -7,8 +7,12 @@ var lssFinalApp;
             function cSvc($resource) {
                 this.$resource = $resource;
                 this.cAddResource = $resource("/commentshell/addComment");
-                this.cGetResource = $resource("/commentshell/:_id");
+                this.cGetResource = $resource("/commentshell/:username");
             }
+            cSvc.prototype.getComments = function (username) {
+                return this.cGetResource.get({ commenterName: username });
+            };
+            ;
             cSvc.prototype.saveComment = function (newComment) {
                 return this.cAddResource.save(newComment).$promise;
             };

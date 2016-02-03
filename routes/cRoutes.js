@@ -21,4 +21,14 @@ router.post("/addComment", function (req, res, next) {
         });
     });
 });
+router.get("/:username", function (req, res, next) {
+    Comment.find({ commenterName: req.query["username"] })
+        .exec(function (error, comments) {
+        if (error)
+            return next(error);
+        if (!comments)
+            res.send([]);
+        res.send({ comments: comments });
+    });
+});
 module.exports = router;
