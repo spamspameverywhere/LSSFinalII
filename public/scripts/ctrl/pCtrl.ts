@@ -8,6 +8,8 @@ namespace lssFinalApp.Controllers {
     public onePost;
     public postsOwn;
 
+    public newComment;
+
     public user;
     public loggedInUser;
 
@@ -25,11 +27,8 @@ namespace lssFinalApp.Controllers {
       });
     };
 
-    public viewPost(title) {
-      this.$location.path(this.onePost.origPosterName + "/" + this.onePost.title);
-    }
-
     constructor(
+      private cSvc: lssFinalApp.Services.cSvc,
       private pSvc: lssFinalApp.Services.pSvc,
       private uSvc: lssFinalApp.Services.uSvc,
       private $location: ng.ILocationService,
@@ -38,7 +37,7 @@ namespace lssFinalApp.Controllers {
     ) {
       this.onePost = pSvc.getPost($routeParams["title"]);
       this.user = uSvc.loadUHome($routeParams["username"]);
-      this.loggedInUser = this.loggedInUser = uSvc.loadUHome(this.$window.localStorage.getItem("username"));
+      this.loggedInUser = uSvc.loadUHome(this.$window.localStorage.getItem("username"));
     };
   };
 

@@ -45,6 +45,12 @@ namespace lssFinalApp {
       controllerAs: "vm"
     })
 
+    .when("/:username/:title/addComment", {
+      templateUrl: "/public/templates/addComment.html",
+      controller: lssFinalApp.Controllers.cCtrl,
+      controllerAs: "vm"
+    })
+
     .otherwise({redirectTo: "/"});
 
     $locationProvider.html5Mode(true);

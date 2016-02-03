@@ -1,8 +1,8 @@
 "use strict";
 var mongoose = require("mongoose");
 var CommentSchema = new mongoose.Schema({
-    timestamps: { type: Date, required: true },
-    commentText: { type: String, required: true },
+    timestamps: Date,
+    commentText: String,
     postedTo: { type: mongoose.Schema.Types.ObjectId, ref: "Post" },
     commenter: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     commenterName: String

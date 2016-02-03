@@ -1,0 +1,11 @@
+<h2 class = "lssHClass">Commenting as {{vm.loggedInUser.username}}</h2>
+
+<h3 class = "lssHClass">New Comment:</h3>
+
+<form>
+
+  <input ng-model = "vm.newComment.commentText" type = "text" placeholder = "Speak!"><br><br>
+
+  <input class = "lssSecondaryBtn" ng-click = "vm.addNewComment()" type = "submit" value = "Submit">
+
+</form>

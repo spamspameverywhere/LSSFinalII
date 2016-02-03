@@ -11,13 +11,13 @@ var lssFinalApp;
                 this.$location = $location;
                 this.$routeParams = $routeParams;
                 this.$window = $window;
-                this.onePost = this.onePost = pSvc.getPost($routeParams["title"]);
+                this.onePost = pSvc.getPost($routeParams["title"]);
                 this.loggedInUser = uSvc.loadUHome(this.$window.localStorage.getItem("username"));
             }
-            cCtrl.prototype.addComment = function () {
+            cCtrl.prototype.addNewComment = function () {
                 var _this = this;
                 var newComment = {
-                    timestamps: Date.now().toString,
+                    timestamps: Date.now().toString(),
                     commentText: this.newComment.commentText,
                     postedTo: this.onePost._id,
                     commenter: this.loggedInUser._id,

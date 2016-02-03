@@ -4,7 +4,8 @@ var lssFinalApp;
     var Controllers;
     (function (Controllers) {
         var pCtrl = (function () {
-            function pCtrl(pSvc, uSvc, $location, $routeParams, $window) {
+            function pCtrl(cSvc, pSvc, uSvc, $location, $routeParams, $window) {
+                this.cSvc = cSvc;
                 this.pSvc = pSvc;
                 this.uSvc = uSvc;
                 this.$location = $location;
@@ -12,7 +13,7 @@ var lssFinalApp;
                 this.$window = $window;
                 this.onePost = pSvc.getPost($routeParams["title"]);
                 this.user = uSvc.loadUHome($routeParams["username"]);
-                this.loggedInUser = this.loggedInUser = uSvc.loadUHome(this.$window.localStorage.getItem("username"));
+                this.loggedInUser = uSvc.loadUHome(this.$window.localStorage.getItem("username"));
             }
             pCtrl.prototype.addNewPost = function () {
                 var _this = this;
@@ -29,9 +30,6 @@ var lssFinalApp;
                 });
             };
             ;
-            pCtrl.prototype.viewPost = function (title) {
-                this.$location.path(this.onePost.origPosterName + "/" + this.onePost.title);
-            };
             ;
             return pCtrl;
         }());

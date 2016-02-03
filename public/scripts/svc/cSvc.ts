@@ -11,16 +11,17 @@ namespace lssFinalApp.Services {
       return this.cAddResource.save(newComment).$promise;
     };
 
-    public loadComments(_id) {};
+    public deleteComment(comment) {
+      return this.cGetResource.delete({_id: comment._id}).$promise;
+    };
 
     constructor(
-      private $resource: ng.resource.IResourceService,
-      private $window: ng.IWindowService
+      private $resource: ng.resource.IResourceService
     ) {
-      this.cAddResource = $resource("/commentShell/addComment");
-      this.cGetResource = $resource("/commentShell/:_id");
+      this.cAddResource = $resource("/commentshell/addComment");
+      this.cGetResource = $resource("/commentshell/:_id");
     };
   };
 
-  angular.module("lssFinalApp").service("pSvc", pSvc);
+  angular.module("lssFinalApp").service("cSvc", cSvc);
 };

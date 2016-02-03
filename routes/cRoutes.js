@@ -6,19 +6,20 @@ var Post = mongoose.model("Post");
 var Comment = mongoose.model("Comment");
 var newComment = mongoose.model("Comment");
 var router = express.Router();
-router.post("/:title", function (req, res, next) {
-    var newComment = new Comment();
-    newComment.commentText = req.body.commentText;
-    newComment.postedTo = req.body.postedTo;
-    newComment.commenter = req.body.commenter;
-    newComment.commenterName = req.body.commenterName;
+router.post("/addComment", function (req, res, next) {
+    var newComment = new Comment(req.params.newComment);
+    newComment.timestamps = req.params.timestamps;
+    newComment.commentText = req.params.commentText;
+    newComment.postedTo = req.params.postedTo;
+    newComment.commenter = req.params.commenter;
+    newComment.commenterName = req.params.commenterName;
     newComment.save(function (error, newComment) {
         if (error)
             return next(error);
-        User.update({ _id: newComment.origPoster }, { $push: { "comments": newComment._id } }, function (error, comment) {
+        User.update({ _id: newComment.commenter }, { $push: { "comments": newComment._id } }, function (error, newComment) {
             if (error)
                 return next(error);
-            res.send({ comment: comment });
+            res.send({ newComment: newComment });
         });
     });
 });

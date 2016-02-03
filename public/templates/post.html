@@ -7,16 +7,15 @@
     <p><a ng-href = "/{{vm.onePost.origPosterName}}">{{vm.onePost.origPosterName}}</a> on {{vm.onePost.timestamps.createdAt}}</p>
   </div>
 
-  <div ng-controller = "cCtrl" class = "col-md-4">
-    <div class = "row">
-      <h3>Comments</h3>
-      <form>
-        <input ng-model = "commentText" type = "textarea" placeholder = "Speak!">
-        <input class = "lssSecondaryBtn" ng-click = "vm.postComment()" type = "submit" value = "Speak">
-      </form>
+  <div class = "col-md-4" id = "pCommentSection">
+
+    <div class = "row well well-md">
+      <h4>You are logged in as <em class = "lssHClass"><a ng-href = "/{{vm.loggedInUser.username}}">{{vm.loggedInUser.username}}</em></a></h4>
+      <a ng-href = "/{{vm.onePost.origPosterName}}/{{vm.onePost.title}}/addComment" class = "lssSecondaryBtn">Speak!</a>
     </div>
 
-    <div ng-controller = "pCtrl" class = "row">
+    <div class = "row well well-md">
+      <h3>Comments</h3>
       <div ng-repeat = "comment in vm.onePost.comments">
         <p>{{comment.commentText}}</p>
         <p>Posted by {{comment.commenterName}} on {{comment.timestamps.createdAt}}</p>
