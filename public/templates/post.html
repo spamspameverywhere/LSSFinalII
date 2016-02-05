@@ -21,7 +21,7 @@
       <h3>Comments</h3>
       <div ng-repeat = "comment in vm.onePost.comments">
         <p>{{comment.commentText}}</p>
-        <p>Posted by {{comment.commenterName}} on {{comment.timestamps.createdAt}}</p>
+        <p>Posted by <a ng-href = "{{comment.commenterName}}">{{comment.commenterName}}</a> on {{comment.timestamps.createdAt}}</p>
       </div>
     </div>
 

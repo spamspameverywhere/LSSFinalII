@@ -27,7 +27,7 @@
         <h3 class = "lssHClass">Your Comments</h3>
         <div ng-repeat = "comment in vm.user.uComments">
           <p>{{comment.commentText}}</p>
-          <p>{{comment.postedToTitle}}, {{comment.timestamps.createdAt}}</p>
+          <p><a ng-href = "/{{comment.commenterName}}/{{comment.postedToTitle}}">{{comment.postedToTitle}}</a>, {{comment.timestamps.createdAt}}</p>
         </div>
       </div>
 
