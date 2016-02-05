@@ -14,12 +14,16 @@ namespace lssFinalApp.Controllers {
       password: this.newUser.password,
       pwdConfirm: this.newUser.pwdConfirm
       };
-      this.uSvc.registerUser(this.newUser).then((res) => {
-        this.uSvc.setToken(res.token);
-        this.uSvc.setUser();
-        this.$window.localStorage.setItem("username", this.newUser.username);
-        this.$location.path(this.newUser.username);
-      });
+      if (this.newUser.password === this.newUser.pwdConfirm) {
+        this.uSvc.registerUser(this.newUser).then((res) => {
+          this.uSvc.setToken(res.token);
+          this.uSvc.setUser();
+          this.$window.localStorage.setItem("username", this.newUser.username);
+          this.$location.path(this.newUser.username);
+        });
+      } else {
+        alert("Passwords do not match");
+      }
     };
 
     public login() {

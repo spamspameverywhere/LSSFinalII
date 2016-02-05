@@ -17,12 +17,17 @@ var lssFinalApp;
                     password: this.newUser.password,
                     pwdConfirm: this.newUser.pwdConfirm
                 };
-                this.uSvc.registerUser(this.newUser).then(function (res) {
-                    _this.uSvc.setToken(res.token);
-                    _this.uSvc.setUser();
-                    _this.$window.localStorage.setItem("username", _this.newUser.username);
-                    _this.$location.path(_this.newUser.username);
-                });
+                if (this.newUser.password === this.newUser.pwdConfirm) {
+                    this.uSvc.registerUser(this.newUser).then(function (res) {
+                        _this.uSvc.setToken(res.token);
+                        _this.uSvc.setUser();
+                        _this.$window.localStorage.setItem("username", _this.newUser.username);
+                        _this.$location.path(_this.newUser.username);
+                    });
+                }
+                else {
+                    alert("Passwords do not match");
+                }
             };
             ;
             uCtrl.prototype.login = function () {

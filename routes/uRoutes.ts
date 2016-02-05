@@ -27,9 +27,7 @@ router.post("/register", (req, res, next) => {
   newUser.username = req.body.username;
   newUser.email = req.body.email;
   newUser.setPassword(req.body.password);
-  newUser.confirmPassword(req.body.pwdConfirm);
   newUser.token = newUser.generateJWT();
-  if (req.body.password !== req.body.pwdConfirm) return next("Passwords do not match");
   newUser.save((error, user, token) => {
     if (error) return next(error);
     res.send(user);
