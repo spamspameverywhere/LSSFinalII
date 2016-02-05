@@ -13,6 +13,7 @@ var lssFinalApp;
                 this.$window = $window;
                 this.onePost = pSvc.getPost($routeParams["title"]);
                 this.loggedInUser = uSvc.loadUHome(this.$window.localStorage.getItem("username"));
+                this.oneComment = cSvc.getComment($routeParams["_id"]);
             }
             cCtrl.prototype.addNewComment = function () {
                 var _this = this;
@@ -20,6 +21,7 @@ var lssFinalApp;
                     timestamps: Date.now().toString(),
                     commentText: this.newComment.commentText,
                     postedTo: this.onePost._id,
+                    postedToTitle: this.onePost.title,
                     commenterName: this.loggedInUser.username
                 };
                 this.cSvc.saveComment(newComment).then(function (res) {

@@ -6,9 +6,6 @@ namespace lssFinalApp.Controllers {
 
     public newPost;
     public onePost;
-    public postsOwn;
-
-    public newComment;
 
     public user;
     public loggedInUser;

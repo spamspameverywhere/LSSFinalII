@@ -7,14 +7,14 @@ var lssFinalApp;
             function cSvc($resource) {
                 this.$resource = $resource;
                 this.cAddResource = $resource("/commentshell/addComment");
-                this.cGetResource = $resource("/commentshell/:username");
+                this.cGetResource = $resource("/commentshell/:_id");
             }
-            cSvc.prototype.getComments = function (username) {
-                return this.cGetResource.get({ commenterName: username });
-            };
-            ;
             cSvc.prototype.saveComment = function (newComment) {
                 return this.cAddResource.save(newComment).$promise;
+            };
+            ;
+            cSvc.prototype.getComment = function (_id) {
+                return this.cGetResource.get({ _id: _id });
             };
             ;
             cSvc.prototype.deleteComment = function (comment) {

@@ -7,12 +7,12 @@ namespace lssFinalApp.Services {
     public cAddResource;
     public cGetResource;
 
-    public getComments(username) {
-      return this.cGetResource.get({commenterName: username});
-    };
-
     public saveComment(newComment) {
       return this.cAddResource.save(newComment).$promise;
+    };
+
+    public getComment(_id) {
+      return this.cGetResource.get({_id: _id});
     };
 
     public deleteComment(comment) {
@@ -23,7 +23,7 @@ namespace lssFinalApp.Services {
       private $resource: ng.resource.IResourceService
     ) {
       this.cAddResource = $resource("/commentshell/addComment");
-      this.cGetResource = $resource("/commentshell/:username");
+      this.cGetResource = $resource("/commentshell/:_id");
     };
   };
 

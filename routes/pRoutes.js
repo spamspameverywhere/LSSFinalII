@@ -48,16 +48,6 @@ router.get("/:title", function (req, res, next) {
         res.send(onePost);
     });
 });
-router.get("/:username", function (req, res, next) {
-    Post.find({ origPosterName: req.query["username"] })
-        .exec(function (error, posts) {
-        if (error)
-            return next(error);
-        if (!posts)
-            res.send([]);
-        res.send({ posts: posts });
-    });
-});
 router.put("/:title", function (req, res, next) {
     Post.findOneAndUpdate({ title: req.params["title"] }, req.body, { new: true }, function (error, onePost) {
         if (error)

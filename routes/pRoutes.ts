@@ -70,19 +70,6 @@ router.get("/:title", (req, res, next) => {
 });
 
 ////////////////////////
-///GET: User posts
-////////////////////////
-
-router.get("/:username", (req, res, next) => {
-  Post.find({origPosterName: req.query["username"]})
-  .exec((error, posts) => {
-    if (error) return next(error);
-    if (!posts) res.send([]);
-    res.send({posts});
-  });
-});
-
-////////////////////////
 ///PUT: Edit Post
 ////////////////////////
 

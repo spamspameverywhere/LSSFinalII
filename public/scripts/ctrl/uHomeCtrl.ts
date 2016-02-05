@@ -7,8 +7,6 @@ namespace lssFinalApp.Controllers {
     public user;
     public loggedInUser;
 
-    public comments;
-
     constructor(
       private cSvc: lssFinalApp.Services.cSvc,
       private pSvc: lssFinalApp.Services.pSvc,
@@ -19,7 +17,6 @@ namespace lssFinalApp.Controllers {
     ) {
       this.user = uSvc.loadUHome($routeParams["username"]);
       this.loggedInUser = uSvc.loadUHome(this.$window.localStorage.getItem("username"));
-      this.comments = cSvc.getComments($routeParams["username"]);
     };
   };
 

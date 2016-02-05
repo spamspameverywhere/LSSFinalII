@@ -25,8 +25,9 @@
 
       <div class = "row">
         <h3 class = "lssHClass">Your Comments</h3>
-        <div ng-repeat = "comment in vm.comments">
-          
+        <div ng-repeat = "comment in vm.user.uComments">
+          <p>{{comment.commentText}}</p>
+          <p>{{comment.postedToTitle}}, {{comment.timestamps.createdAt}}</p>
         </div>
       </div>
 
@@ -36,7 +37,7 @@
 
       <div class = "row well well-md">
         <h4>You are logged in as <em class = "lssHClass"><a ng-href = "/{{vm.loggedInUser.username}}">{{vm.loggedInUser.username}}</em></a></h4>
-        <input class = "lssSecondaryBtn" type = "button" ng-click = "editUProfile()" value = "Edit my information">
+        <input class = "lssSecondaryBtn" type = "button" ng-click = "editUProfile()" value = "Edit my information"><br>
         <a class = "lssSecondaryBtn" target = "_self" href = "/{{vm.user.username}}/addPost">Add new post</a>
       </div>
 

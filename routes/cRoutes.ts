@@ -7,9 +7,10 @@
 import express = require("express");
 let mongoose = require("mongoose");
 
-let Post = mongoose.model("Post");
 let Comment = mongoose.model("Comment");
 let newComment = mongoose.model("Comment");
+let Post = mongoose.model("Post");
+let User = mongoose.model("User");
 
 ////////////////////////
 ///Router
@@ -26,26 +27,31 @@ router.post("/addComment", (req, res, next) => {
   newComment.timestamps = req.body.timestamps;
   newComment.commentText = req.body.commentText;
   newComment.postedTo = req.body.postedTo;
+  newComment.postedToTitle = req.body.postedToTitle;
   newComment.commenterName = req.body.commenterName;
   newComment.save((error, newComment) => {
     if (error) return next(error);
     Post.update({_id: newComment.postedTo}, {$push: {"comments": newComment._id}}, (error, comment) => {
       if (error) return next(error);
-      res.send({newComment});
+      User.update({username: newComment.commenterName}, {$push: {"uComments": newComment._id}}, (error, comment) => {
+        if (error) return next(error);
+        res.send({newComment});
+      });
     });
   });
 });
 
 ////////////////////////
-///GET: User comments
+///GET: Single comment
 ////////////////////////
 
-router.get("/:username", (req, res, next) => {
-  Comment.find({commenterName: req.query["username"]})
-  .exec((error, comments) => {
+router.get("/:_id", (req, res, next) => {
+  Comment.findOne({_id: req.params["_id"]})
+  .populate("postedTo", "title")
+  .exec((error, oneComment) => {
     if (error) return next(error);
-    if (!comments) res.send([]);
-    res.send({comments});
+    if (!oneComment) return next({message: "No comment"});
+    res.send(oneComment)
   });
 });
 

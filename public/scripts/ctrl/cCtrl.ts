@@ -7,6 +7,7 @@ namespace lssFinalApp.Controllers {
     public onePost;
 
     public newComment;
+    public oneComment;
 
     public loggedInUser;
 
@@ -15,6 +16,7 @@ namespace lssFinalApp.Controllers {
         timestamps: Date.now().toString(),
         commentText: this.newComment.commentText,
         postedTo: this.onePost._id,
+        postedToTitle: this.onePost.title,
         commenterName: this.loggedInUser.username
       };
       this.cSvc.saveComment(newComment).then((res) => {
@@ -32,6 +34,7 @@ namespace lssFinalApp.Controllers {
     ) {
       this.onePost = pSvc.getPost($routeParams["title"]);
       this.loggedInUser = uSvc.loadUHome(this.$window.localStorage.getItem("username"));
+      this.oneComment = cSvc.getComment($routeParams["_id"]);
     };
   };
 

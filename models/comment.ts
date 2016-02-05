@@ -14,6 +14,7 @@ let CommentSchema = new mongoose.Schema({
   timestamps: Date,
   commentText: String,
   postedTo: {type: mongoose.Schema.Types.ObjectId, ref: "Post"},
+  postedToTitle: String,
   commenterName: String
 });
 

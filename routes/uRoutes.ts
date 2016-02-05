@@ -54,6 +54,7 @@ router.get("/:username", (req, res, next) => {
   User.findOne({username: req.params["username"]})
   .populate("uPosts.postsOwn")
   .populate("uPosts.postsOthers")
+  .populate("uComments")
   .exec((error, user) => {
     if (error) return next(error);
     if (!user) return next({message: "No user"});
